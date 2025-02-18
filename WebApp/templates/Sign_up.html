@@ -1,0 +1,102 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>Sign Up</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url({% static 'login/images/bg-1.jpg' %});">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Sign Up</h3>
+			      		</div>
+			      	</div>
+							<form class="signin-form" method="post" action="{% url 'save_signup' %}">
+								{% csrf_token %}
+			      		<div class="form-group mb-3">
+			      			<label class="label">Username</label>
+			      			<input type="text" class="form-control" name="username" placeholder="Username" required>
+			      		</div>
+		            <div class="form-group mb-3">
+		            	<label class="label">Password</label>
+		              <input type="password" class="form-control" name="pass1" placeholder="Password" required>
+		            </div>
+					<div class="form-group mb-3">
+		            	<label class="label">Confirm Password</label>
+		              <input type="password" class="form-control" name="pass2" placeholder="Confirm Password" required>
+		            </div>
+					<div class="form-group mb-3">
+		            	<label class="label">Email Id</label>
+		              <input type="text" class="form-control" name="email" placeholder="Email Id" required>
+		            </div>
+
+		            <div class="form-group">
+		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign Up</button>
+		            </div>
+		          </form>
+		          <p class="text-center">Already a member? <a href="{% url 'sign_in' %}">Sign In</a></p>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="{% static 'login/js/jquery.min.js' %}"></script>
+  <script src="{% static 'login/js/popper.js' %}"></script>
+  <script src="{% static 'login/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'login/js/main.js' %}"></script>
+	<script>
+        function validation(){
+        username=document.form1.username.value;
+        p1=document.form1.pass1.value;
+        p2=document.form1.pass2.value;
+        email=document.form1.email.value;
+        if (username==""){
+            alert("Username can't be blank")
+        }
+        else if(p1==""){
+            alert("Password can't be blank")
+        }
+        else if(p2==""){
+            alert("Confirm Password can't be blank")
+        }
+        else if(email==""){
+            alert("Email Address can't be blank")
+        }
+        else if(p1.length<6){
+            alert("Password must contain atleast 6 characters")
+        }
+        else if(p1==p2){
+            return true
+        }
+        else{
+            alert("Password doesn't match")
+        }
+    }
+    </script>
+
+
+	</body>
+</html>
+

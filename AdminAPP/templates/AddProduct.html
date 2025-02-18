@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Products</h4>
+                  <form class="forms-sample" method="post" action="{% url 'save_product' %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Please Select your Category</label>
+                          <select class="form-control" id="exampleSelectGender" name="categoryname">
+                            {% for i in categories %}
+                            <option>{{i.Name}}</option>
+                            {% endfor %}
+                          </select>
+                      </div>
+                      <div class="form-group">
+                      <label for="exampleInputName1">Product Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" name="productname" placeholder="Product Name">
+                    </div>
+                      <div class="form-group">
+                      <label >Description</label>
+                      <textarea class="form-control" name="description" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName1">Price</label>
+                      <input type="number" class="form-control" name="price" placeholder="Price">
+                    </div>
+                    <div class="form-group">
+                      <label>Category Image</label>
+                      <input type="file" name="pimage">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+</body>
+</html>
+{% endblock %}
